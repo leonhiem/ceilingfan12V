@@ -1,0 +1,51 @@
+/*
+ *
+ * 
+ */
+#include <stdlib.h>
+#include <avr/io.h>
+#include <util/delay.h>
+
+#include "delay.h"
+#include "fan.h"
+
+
+
+void mosfet(uint8_t porton)
+{
+        PORTB &= ~(1<<porton); // on now
+        delay_us(500);
+        PORTB |= (1<<porton);  // off
+        delay_us(400);
+        PORTB &= ~(1<<porton); // on now
+        delay_ms(1);
+        PORTB |= (1<<porton);  // off
+        delay_us(100);
+        PORTB &= ~(1<<porton); // on now
+        delay_ms(6); //4
+        PORTB |= (1<<porton);  // off
+        delay_us(100);
+        PORTB &= ~(1<<porton); // on now
+        delay_ms(1);
+        PORTB |= (1<<porton);  // off
+        delay_us(400);
+        PORTB &= ~(1<<porton); // on now
+        delay_us(500);
+        PORTB |= (1<<porton);  // off
+}
+
+int main(void) 
+{
+    PORTB = 0x4;
+    DDRB  = 0x3b;
+
+
+    while(1) {
+        mosfet(PB0);
+        delay_ms(1);
+        mosfet(PB1);
+        delay_ms(1);
+    }
+}
+
+

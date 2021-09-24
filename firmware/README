@@ -1,0 +1,44 @@
+       fan running on 12V using push-pull MOSFET driver
+       ------------------------------------------------
+
+Tue Jul 29 22:16:25 CEST 2014
+Author: leon@hiemstra-electronics.com
+
+
+The fan can run on 4 speeds. The button on PB3 toggles round 5 states:
+
+0=off    
+1=slow   (~26Hz, 3.3 Watt)
+2=medium (~31Hz    5 Watt)
+3=fast   (~37Hz  6.6 Watt)
+4=faster (~41Hz    7 Watt)
+
+
+fan running on 12V using push-pull MOSFET driver
+
+
+7 Watt ceilingfan bought in Phnom Penh, Cambodia for US$7.
+Runs on 230 VAC. Has 4180 turns of 1x 0.2mm copperwire strand (740 Ohm)
+
+
+Rewinded the coil:
+------------------
+number of turns 0.4mm (diameter) copperwire: 210 
+However it turns out that the necessary VDC must be 16.5V
+on the DC supply side of the push-pull mosfet PCB.
+
+For winding the coil: Take 2 strands of 0.4mm copperwire.
+Length is 27meter. Wind bifilar on bobbin 210 turns.
+
+Update:
+-------
+Because now the fan only works from 16.5V I tried to change that to work from 12V.
+I tried to decrease the number of turns to 100 in steps of 40.
+100 turns is too low (MOSFETs get hot).
+At 160 turns I see the fan works fine at 13.7V.
+
+If the voltage is too low, the fan is not strong enough to achieve full speed.
+
+Idea: 
+- The copper wire thickness might need to be increased
+- To reduce the skineffect 2 stands of wire instead of 1 might help.
